@@ -1,0 +1,38 @@
+name: "NodeRED_Simu"
+type: "sw.application"
+description: "Node-RED"
+assets:
+  repository:
+    type: "blob.asset"
+    data:
+        url: "https://github.com/arsiesis/balena-node-red"
+  logo:
+    type: "blob.asset"
+    data:
+        url: "https://raw.githubusercontent.com/arsiesis/balena-node-red/75a25ef89a6dfef0fab428e9a0b9ac5bc4ddfc5b/logo.png"
+data:
+  applicationEnvironmentVariables:
+    - PORT: 80
+    - USERNAME: "test"
+    - PASSWORD: "$2b$08$hKNRG3SOOtmifcUotJoL7.4C9SYrxOY7PdCTGRo8gPB8Quk7htfBy"  #node-red-admin hash-pw         
+    - CONSOLE_LOG: "trace"  # fatal < error < warn < info < debug < trace
+    - CREDENTIALSECRET: "credentialSecret"
+    - TITRE: "Nodered"
+    - TITRE_URL: '"https://flows.nodered.org"'
+    - SCP_PASSWORD: 'balena2'
+    - ENABLE_REMOTE_CONTROL_VIA_ADVANCEDSETTINGS: '1'
+    - LAUNCH_URL: '"http://localhost:80/ui"'
+    - KIOSK: '1'
+    - GALLERY_URL: 'testurl'
+    - WINDOW_SIZE: '1920,1080'
+  applicationConfigVariables:
+    - BALENA_HOST_CONFIG_start_x: 1
+    - BALENA_HOST_CONFIG_gpu_mem: 128
+    - BALENA_HOST_CONFIG_dtparam: "\"i2c_arm=on\",\"spi=on\",\"audio=on\""
+    - BALENA_HOST_CONFIG_dtoverlay: "\"i2c-gpio,bus=4,i2c_gpio_delay_us=1,i2c_gpio_sda=23,i2c_gpio_scl=24\""
+  defaultDeviceType: "raspberrypi4-64"
+  supportedDeviceTypes:
+    - "raspberry-pi"
+    - "raspberry-pi2"
+    - "raspberrypi3"
+    - "raspberrypi4-64"

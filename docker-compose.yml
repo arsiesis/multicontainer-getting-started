@@ -64,19 +64,9 @@ services:
       io.balena.features.dbus: 1
     volumes:
       - node-red-data:/data/node-red-data
-      - kodi-data:/data/kodi-data
-      - kodi2-data:/data/kodi2-data
-      #- volume_homeassistant:./volume_homeassistant
       - nodered_working_dir:/data/nodered_working_dir
       - node_modules:/data/node_modules
       - redis-data:/data/redis-data
-      - knxd-data:/data/knxd-data
-      - knxd2-data:/data/knxd2-data
-      - knxd3-data:/data/knxd3-data
-      - knxd4-data:/data/knxd4-data
-      - knxd5-data:/data/knxd5-data
-      - homer-data:/data/homer-data
-      - snapdrop-config:/data/snapdrop-config
     ports:
       - "22:22/udp"
       - "22:22/tcp"  
