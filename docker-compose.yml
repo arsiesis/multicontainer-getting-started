@@ -11,6 +11,11 @@ services:
     depends_on:
       - frontend
       - data
+      - nodered
+      - redis
+      - scp-server
+    volumes:
+      - haproxy-data:/usr/local/etc/haproxy
     ports:
       - "80:80"
   frontend:
