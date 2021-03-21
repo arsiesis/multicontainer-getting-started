@@ -62,6 +62,7 @@ RUN JOBS=MAX npm install -g --production --unsafe-perm \
        #node-red-contrib-ui-media-recorder \
        #node-red-contrib-image-output \
        #node-red-contrib-drawsvg \
+       node-red-contrib-dobaos \
        #dobaos/node-red-contrib-dobaos
        node-red-contrib-ip
 

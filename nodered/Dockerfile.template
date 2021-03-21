@@ -66,6 +66,7 @@ RUN JOBS=MAX npm install -g --production --unsafe-perm \
        node-red-contrib-virtual-smart-home \
        node-red-contrib-counter \
        node-red-contrib-tts-ultimate \
+       node-red-contrib-dobaos \
        #dobaos/node-red-contrib-dobaos \
        node-red-contrib-ip
 
