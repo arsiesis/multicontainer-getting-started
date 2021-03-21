@@ -1,0 +1,1007 @@
+[
+    {
+        "id": "d3b03a7b.8ba678",
+        "type": "tab",
+        "label": "KODI",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5966bb34.fc64a4",
+        "type": "switch",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "property": "payload.notification",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Player.OnResume",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Player.OnPlay",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Player.OnPause",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Player.OnStop",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "GUI.OnScreensaverActivated",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "GUI.OnScreensaverDeactivated",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Application.OnVolumeChanged",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 7,
+        "x": 230,
+        "y": 760,
+        "wires": [
+            [
+                "58eff72c.65baf8"
+            ],
+            [
+                "58eff72c.65baf8"
+            ],
+            [
+                "397f3aae.836cf6"
+            ],
+            [
+                "397f3aae.836cf6"
+            ],
+            [
+                "9bee8534.fffbf8"
+            ],
+            [
+                "f44ffe6e.d552d"
+            ],
+            [
+                "30b2b9d3.f15f36"
+            ]
+        ]
+    },
+    {
+        "id": "9bee8534.fffbf8",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "Screensaver On",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 440,
+        "y": 820,
+        "wires": [
+            [
+                "d27ddf8c.b51f3"
+            ]
+        ]
+    },
+    {
+        "id": "f44ffe6e.d552d",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "Screensaver Off",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 440,
+        "y": 860,
+        "wires": [
+            [
+                "948924eb.0da4a8"
+            ]
+        ]
+    },
+    {
+        "id": "397f3aae.836cf6",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "Pause/Stop",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 760,
+        "wires": [
+            [
+                "241681e0.aa80de"
+            ]
+        ]
+    },
+    {
+        "id": "58eff72c.65baf8",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "Play",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 410,
+        "y": 720,
+        "wires": [
+            [
+                "933fba96.17b4b8"
+            ]
+        ]
+    },
+    {
+        "id": "5a576c9.6571a94",
+        "type": "kodi-in",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "controller": "273fb093.8b7fa8",
+        "x": 90,
+        "y": 760,
+        "wires": [
+            [
+                "932a0a9.05597f8",
+                "5966bb34.fc64a4"
+            ]
+        ]
+    },
+    {
+        "id": "18254e8b.c79e41",
+        "type": "rpi-gpio out",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "pin": "15",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 740,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "d2a5422.479aec",
+        "type": "rpi-gpio out",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "pin": "16",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 740,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "1ded5212.a6971e",
+        "type": "rpi-gpio out",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "pin": "18",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 920,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "932a0a9.05597f8",
+        "type": "debug",
+        "z": "d3b03a7b.8ba678",
+        "name": "logs",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 230,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "30b2b9d3.f15f36",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "OnVolumeChanged",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 462,
+        "y": 939,
+        "wires": [
+            [
+                "dd7d6409.220418",
+                "e9b071a0.7737b"
+            ]
+        ]
+    },
+    {
+        "id": "e9b071a0.7737b",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "OFF",
+        "func": "msg.payload=0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 633,
+        "y": 967,
+        "wires": [
+            [
+                "cbe829fe.7e63d8"
+            ]
+        ]
+    },
+    {
+        "id": "dd7d6409.220418",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "ON",
+        "func": "msg.payload=1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 632.6666870117188,
+        "y": 921.333251953125,
+        "wires": [
+            [
+                "1ded5212.a6971e"
+            ]
+        ]
+    },
+    {
+        "id": "cbe829fe.7e63d8",
+        "type": "delay",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 768.5,
+        "y": 967,
+        "wires": [
+            [
+                "1ded5212.a6971e"
+            ]
+        ]
+    },
+    {
+        "id": "7050c6ce.1aafb8",
+        "type": "kodi-out",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "controller": "273fb093.8b7fa8",
+        "unit_number": "1",
+        "output": "1",
+        "kodicommand": "",
+        "x": 970,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "fd13b08d.58f14",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "Volume-",
+        "func": "\n\nmsg.payload =\n{\n    \"cmd\": \"Application.SetVolume\",\n    \"args\" :{\n        \"volume\":\"decrement\"\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 400,
+        "wires": [
+            [
+                "7050c6ce.1aafb8"
+            ]
+        ]
+    },
+    {
+        "id": "d606234e.900d3",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "STOP",
+        "func": "\nmsg.payload =\n{\n    \"cmd\": \"Player.Stop\",\n    \"args\" :{\n        \"playerid\": 1\n    }\n}\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "7050c6ce.1aafb8"
+            ]
+        ]
+    },
+    {
+        "id": "e3b91a81.e8fa48",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "Volume+",
+        "func": "\n\nmsg.payload =\n{\n    \"cmd\": \"Application.SetVolume\",\n    \"args\" :{\n        \"volume\":\"increment\"\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 300,
+        "wires": [
+            [
+                "7050c6ce.1aafb8"
+            ]
+        ]
+    },
+    {
+        "id": "470e21a4.95752",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "PLAY/PAUSE",
+        "func": "\nmsg.payload =\n{\n    \"cmd\": \"Player.PlayPause\",\n    \"args\" :{\n        \"playerid\": 1\n    }\n}\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "7050c6ce.1aafb8"
+            ]
+        ]
+    },
+    {
+        "id": "3586694.8b41e96",
+        "type": "http in",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "url": "/playpause",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "921e010.c83b7",
+                "470e21a4.95752"
+            ]
+        ]
+    },
+    {
+        "id": "921e010.c83b7",
+        "type": "http response",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 390,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4364f492.f7896c",
+        "type": "http in",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "url": "/vol_plus",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 340,
+        "wires": [
+            [
+                "e3b91a81.e8fa48",
+                "5231b77b.91e468"
+            ]
+        ]
+    },
+    {
+        "id": "ecbfdd4e.0919e",
+        "type": "http in",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "url": "/vol_moins",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 440,
+        "wires": [
+            [
+                "fd13b08d.58f14",
+                "580ec9d3.198ec8"
+            ]
+        ]
+    },
+    {
+        "id": "c44231b.5eed4d",
+        "type": "http in",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "url": "/stop",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "d606234e.900d3",
+                "e307e8e9.9be078"
+            ]
+        ]
+    },
+    {
+        "id": "e307e8e9.9be078",
+        "type": "http response",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 390,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5231b77b.91e468",
+        "type": "http response",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 370,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "580ec9d3.198ec8",
+        "type": "http response",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 350,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "60ebe704.440dd8",
+        "type": "http in",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "url": "/text/:value",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 600,
+        "wires": [
+            [
+                "902751c3.3493c",
+                "7956d119.6d10d"
+            ]
+        ]
+    },
+    {
+        "id": "902751c3.3493c",
+        "type": "http response",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 380,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "6dc57e14.59fc7",
+        "type": "http in",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "url": "/vol/:value",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 500,
+        "wires": [
+            [
+                "c37ca967.b8d118",
+                "2319bf9b.24501"
+            ]
+        ]
+    },
+    {
+        "id": "c37ca967.b8d118",
+        "type": "http response",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 380,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "2319bf9b.24501",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "Volume",
+        "func": "\nmsg.payload =\n{\n    \"cmd\": \"Application.SetVolume\",\n    \"args\" :{\n        \"volume\": parseInt(msg.req.params.value,10)\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 380,
+        "y": 500,
+        "wires": [
+            [
+                "7050c6ce.1aafb8"
+            ]
+        ]
+    },
+    {
+        "id": "7956d119.6d10d",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "test",
+        "func": "\nmsg.payload =\n{\n    \"cmd\": \"GUI.ShowNotification\",\n    \"args\" :{\n        \"title\":\"ATTENTION\",\n        \"message\": msg.req.params.value\n    }\n}\n\n//if (msg.req.params.value === \"\")\n\n//msg.req.params.value = \"Quelqu'un demande audiance\";\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 370,
+        "y": 600,
+        "wires": [
+            [
+                "7050c6ce.1aafb8"
+            ]
+        ]
+    },
+    {
+        "id": "4fbb5b23.79cc64",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "likefm",
+        "func": "return {\n    payload: \n        {\n            \"cmd\":\"Player.Open\",\n            \"args\":{\n                \"item\":{\n                    \"file\":\"smb://CUBIE/boba_500gb/kodi_radiochannels/likefm.strm\"   \n                }\n                \n            }\n        }\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 870,
+        "y": 80,
+        "wires": [
+            [
+                "7050c6ce.1aafb8"
+            ]
+        ]
+    },
+    {
+        "id": "c1584d5b.b13be",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "loungefm_tunein",
+        "func": "return {\n    payload: \n        {\n            \"cmd\":\"Player.Open\",\n            \"args\":{\n                \"item\":{\n                    \"file\": \"plugin://plugin.audio.tuneinradio/?logo=http%3A%2F%2Fcdn-radiotime-logos.tunein.com%2Fs206479q.png&path=tune&id=s206479&name=Lounge+FM+Terrace+%28%29\"\n                }\n                \n            }\n        }\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 910,
+        "y": 160,
+        "wires": [
+            [
+                "7050c6ce.1aafb8"
+            ]
+        ]
+    },
+    {
+        "id": "30691f7d.e4336",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "relaxfm",
+        "func": "return {\n    payload: \n        {\n            \"cmd\":\"Player.Open\",\n            \"args\":{\n                \"item\":{\n                    \"file\":\"smb://nas_server/drive/kodi_radiochannels/relaxfm.strm\"\n                }\n                \n            }\n        }\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 880,
+        "y": 120,
+        "wires": [
+            [
+                "7050c6ce.1aafb8"
+            ]
+        ]
+    },
+    {
+        "id": "a522f571.14e708",
+        "type": "inject",
+        "z": "d3b03a7b.8ba678",
+        "name": "play",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 710,
+        "y": 80,
+        "wires": [
+            [
+                "4fbb5b23.79cc64"
+            ]
+        ]
+    },
+    {
+        "id": "d5a3febb.59b88",
+        "type": "inject",
+        "z": "d3b03a7b.8ba678",
+        "name": "play",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 710,
+        "y": 120,
+        "wires": [
+            [
+                "30691f7d.e4336"
+            ]
+        ]
+    },
+    {
+        "id": "287c48b2.d279c8",
+        "type": "inject",
+        "z": "d3b03a7b.8ba678",
+        "name": "play",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 710,
+        "y": 160,
+        "wires": [
+            [
+                "c1584d5b.b13be"
+            ]
+        ]
+    },
+    {
+        "id": "12fbc79.796bb38",
+        "type": "function",
+        "z": "d3b03a7b.8ba678",
+        "name": "loungefm_tunein",
+        "func": "return {\n    payload: \n        {\n            \"cmd\":\"Player.Open\",\n            \"args\":{\n                \"item\":{\n                    \"file\": \"plugin://plugin.audio.tuneinradio/?path=tune&id=s53084\"\n                }\n                \n            }\n        }\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 920,
+        "y": 200,
+        "wires": [
+            [
+                "7050c6ce.1aafb8"
+            ]
+        ]
+    },
+    {
+        "id": "e7fc1b31.d3b5c8",
+        "type": "inject",
+        "z": "d3b03a7b.8ba678",
+        "name": "play",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 720,
+        "y": 200,
+        "wires": [
+            [
+                "12fbc79.796bb38"
+            ]
+        ]
+    },
+    {
+        "id": "4a5df8b6.0b9468",
+        "type": "inject",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "470e21a4.95752"
+            ]
+        ]
+    },
+    {
+        "id": "aa8f56ab.037bf8",
+        "type": "inject",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "d606234e.900d3"
+            ]
+        ]
+    },
+    {
+        "id": "6f845f1f.3d7e2",
+        "type": "inject",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 300,
+        "wires": [
+            [
+                "e3b91a81.e8fa48"
+            ]
+        ]
+    },
+    {
+        "id": "9f3a6eb4.c2d0c",
+        "type": "inject",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 400,
+        "wires": [
+            [
+                "fd13b08d.58f14"
+            ]
+        ]
+    },
+    {
+        "id": "d8127451.806888",
+        "type": "inject",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "props": [
+            {
+                "p": "req.params.value",
+                "v": "50",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 540,
+        "wires": [
+            [
+                "2319bf9b.24501"
+            ]
+        ]
+    },
+    {
+        "id": "deef7de1.49489",
+        "type": "inject",
+        "z": "d3b03a7b.8ba678",
+        "name": "",
+        "props": [
+            {
+                "p": "req.params.value",
+                "v": "test",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 640,
+        "wires": [
+            [
+                "7956d119.6d10d"
+            ]
+        ]
+    },
+    {
+        "id": "241681e0.aa80de",
+        "type": "change",
+        "z": "d3b03a7b.8ba678",
+        "name": "ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 760,
+        "wires": [
+            [
+                "18254e8b.c79e41"
+            ]
+        ]
+    },
+    {
+        "id": "933fba96.17b4b8",
+        "type": "change",
+        "z": "d3b03a7b.8ba678",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 720,
+        "wires": [
+            [
+                "18254e8b.c79e41"
+            ]
+        ]
+    },
+    {
+        "id": "d27ddf8c.b51f3",
+        "type": "change",
+        "z": "d3b03a7b.8ba678",
+        "name": "ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 820,
+        "wires": [
+            [
+                "d2a5422.479aec"
+            ]
+        ]
+    },
+    {
+        "id": "948924eb.0da4a8",
+        "type": "change",
+        "z": "d3b03a7b.8ba678",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 860,
+        "wires": [
+            [
+                "d2a5422.479aec"
+            ]
+        ]
+    },
+    {
+        "id": "273fb093.8b7fa8",
+        "type": "kodi-controller",
+        "name": "kodi",
+        "host": "localhost",
+        "port": "9090"
+    }
+]

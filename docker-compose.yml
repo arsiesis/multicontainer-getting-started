@@ -1,9 +1,10 @@
 version: '2'
+volumes:
+    node-red-data:
+    nodered_working_dir:
+    node_modules:
+    redis-data:
 services:
-  frontend:
-    build: ./frontend
-    expose:
-      - "80"
   proxy:
     build: ./haproxy
     depends_on:
@@ -11,7 +12,80 @@ services:
       - data
     ports:
       - "80:80"
+  frontend:
+    build: ./frontend
+    expose:
+      - "80"
   data:
     build: ./data
     expose:
       - "8080"
+  node-red:
+    build: ./node-red
+    environment:
+      - UDEV=1  #active le hotplug des périphérique USB par ex mais il faut que privileged true soit déclarer aussi # see https://www.balena.io/docs/reference/base-images/base-images/#working-with-dynamically-plugged-devices
+      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket'
+    volumes:
+      - node-red-data:/data
+      - nodered_working_dir:/usr/src/app
+      - node_modules:/usr/local/lib/node_modules
+    restart: no #always
+    privileged: true
+    network_mode: host
+    labels:
+      io.balena.features.supervisor-api: '1'  #pour les noeud nidered ??
+      io.balena.features.dbus: '1'
+      #???io.balena.features.kernel-modules: '1'
+    cap_add:
+      - SYS_RAWIO
+    devices:
+      - "/dev/mem:/dev/mem"
+      - "/dev/gpiomem:/dev/gpiomem"
+      - "/dev/i2c-1:/dev/i2c-1"
+      #- "/dev/i2c-0:/dev/i2c-0"    # TODO. Modif à faire pour l'activer car utiliser pour les shields normalement
+      - "/dev/i2c-4:/dev/i2c-4"
+      - "/dev/ttyACM0:/dev/ttyACM0"   #Port série
+      - "/dev/input/by-path/:/dev/input/by-path/"   #pour le noeud clavier avec les noeud gpio
+    ports:
+      - 81:81
+      - 1883:1883
+      - 1400:1400
+      - 1880:1880
+      - 1980:1880
+    expose:
+      - "80"
+  scp-server:
+    network_mode: host
+    restart: always
+    build:
+      context: ./scp-server
+    privileged: false
+    labels:
+      io.balena.features.dbus: 1
+    volumes:
+      - node-red-data:/data/node-red-data
+      - kodi-data:/data/kodi-data
+      - kodi2-data:/data/kodi2-data
+      #- volume_homeassistant:./volume_homeassistant
+      - nodered_working_dir:/data/nodered_working_dir
+      - node_modules:/data/node_modules
+      - redis-data:/data/redis-data
+      - knxd-data:/data/knxd-data
+      - knxd2-data:/data/knxd2-data
+      - knxd3-data:/data/knxd3-data
+      - knxd4-data:/data/knxd4-data
+      - knxd5-data:/data/knxd5-data
+      - homer-data:/data/homer-data
+      - snapdrop-config:/data/snapdrop-config
+    ports:
+      - "22:22/udp"
+      - "22:22/tcp"  
+  redis:
+    build: ./redis
+    privileged: true
+    restart: always
+    #network_mode: host
+    volumes:
+      - 'redis-data:/data'
+    ports:
+      - "6379:6379"
