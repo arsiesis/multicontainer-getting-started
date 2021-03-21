@@ -4,6 +4,7 @@ volumes:
     nodered_working_dir:
     node_modules:
     redis-data:
+    haproxy-data:
 services:
   proxy:
     build: ./haproxy
@@ -67,6 +68,7 @@ services:
       - nodered_working_dir:/data/nodered_working_dir
       - node_modules:/data/node_modules
       - redis-data:/data/redis-data
+      - haproxy-data:/data/haproxy-data
     ports:
       - "22:22/udp"
       - "22:22/tcp"  
