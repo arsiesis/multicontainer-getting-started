@@ -4,6 +4,7 @@ volumes:
     nodered_working_dir:
     node_modules:
     redis-data:
+    redis-config:
     haproxy-data:
 services:
   proxy:
@@ -73,6 +74,7 @@ services:
       - nodered_working_dir:/data/nodered_working_dir
       - node_modules:/data/node_modules
       - redis-data:/data/redis-data
+      - redis-config:/usr/local/etc/redis
       - haproxy-data:/data/haproxy-data
     ports:
       - "22:22/udp"
@@ -84,5 +86,6 @@ services:
     #network_mode: host
     volumes:
       - 'redis-data:/data'
+      - 'redis-config:/usr/local/etc/redis'
     ports:
       - "6379:6379"
