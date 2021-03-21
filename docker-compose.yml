@@ -37,7 +37,7 @@ services:
       - node_modules:/usr/local/lib/node_modules
     restart: no #always
     privileged: true
-    network_mode: host
+    #network_mode: host
     labels:
       io.balena.features.supervisor-api: '1'  #pour les noeud nidered ??
       io.balena.features.dbus: '1'
