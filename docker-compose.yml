@@ -52,6 +52,7 @@ services:
       #- "/dev/i2c-0:/dev/i2c-0"    # TODO. Modif à faire pour l'activer car utiliser pour les shields normalement
       - "/dev/i2c-4:/dev/i2c-4"
       - "/dev/ttyACM0:/dev/ttyACM0"   #Port série
+      - "/dev/ttyAMA0:/dev/ttyAMA0"   #Dobaos
       - "/dev/input/by-path/:/dev/input/by-path/"   #pour le noeud clavier avec les noeud gpio
     ports:
       - 81:81
