@@ -90,3 +90,59 @@ services:
       - 'redis-config:/usr/local/etc/redis'
     ports:
       - "6379:6379"
+  homer:
+    #https://github.com/bastienwirtz/homer
+    image: b4bz/homer
+    #To build from source, comment previous line and uncomment below
+    #build: .
+    container_name: homer
+    volumes:
+      - homer-data:/www/assets
+    network_mode: host
+    ports:
+      - 83:80
+      - 8080:8080
+    environment:
+      - UID=1000
+      - GID=1000
+    restart: no #unless-stopped
+  ombi:
+    image: linuxserver/ombi
+    container_name: ombi
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ombi-config:/config
+    ports:
+      - 3579:3579
+    restart: unless-stopped
+  heimdall:
+    image: ghcr.io/linuxserver/heimdall:arm64v8-latest
+    #container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - heimdall-config:/config
+    ports:
+      - 82:80
+      - 445:443
+    restart: unless-stopped
+  snapdrop:
+    image: ghcr.io/linuxserver/snapdrop:arm64v8-latest
+    #container_name: snapdrop
+    environment:
+      #- PUID=1000
+      #- PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - snapdrop-config:/config
+      - snapdrop-data:/app/snapdrop
+    ports:
+      - 88:88
+      - 443:443
+      - 3000:3000
+    restart: no #unless-stopped
