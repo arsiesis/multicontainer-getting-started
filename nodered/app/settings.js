@@ -20,7 +20,7 @@
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
-    uiPort: process.env.PORT || 80,
+    uiPort: process.env.NR_PORT || 80,
 
     // By default, the Node-RED UI accepts connections on all IPv4 interfaces.
     // The following property can be used to listen on a specific interface. For
@@ -60,7 +60,7 @@ module.exports = {
     // Note: once you set this property, do not change it - doing so will prevent
     // node-red from being able to decrypt your existing credentials and they will be
     // lost.
-    credentialSecret: process.env.CREDENTIALSECRET,
+    credentialSecret: process.env.NR_CREDENTIALSECRET,
 
     // By default, all user data is stored in the Node-RED install directory. To
     // use a different location, the following property can be used
@@ -106,8 +106,8 @@ module.exports = {
     adminAuth: {
         type: "credentials",
         users: [{
-            username: process.env.USERNAME,
-            password: process.env.PASSWORD,
+            username: process.env.NR_USERNAME,
+            password: process.env.NR_PASSWORD,
             permissions: "*"
         }],
     },
@@ -190,13 +190,13 @@ module.exports = {
             enabled: true
         },
         page: {
-            title: process.env.TITRE,
+            title: process.env.NR_TITRE,
             favicon: "/usr/src/app/assets/favicon.ico"
         },
         header: {
-            title: process.env.TITRE,
+            title: process.env.NR_TITRE,
             image: "/usr/src/app/assets/logo.png", // or null to remove image
-            url: process.env.TITRE_URL
+            url: process.env.NR_TITRE_URL
         },
         login: {
             image: "/usr/src/app/assets/logo.png" // a 256x256 image
@@ -213,7 +213,7 @@ module.exports = {
             // info - record information about the general running of the application + warn + error + fatal errors
             // debug - record information which is more verbose than info + info + warn + error + fatal errors
             // trace - record very detailed logging + debug + info + warn + error + fatal errors
-            level: process.env.CONSOLE_LOG,
+            level: process.env.NR_CONSOLE_LOG,
             // Whether or not to include metric events in the log output
             metrics: false,
             // Whether or not to include audit events in the log output

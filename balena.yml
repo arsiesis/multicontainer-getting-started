@@ -12,13 +12,14 @@ assets:
         url: "https://raw.githubusercontent.com/arsiesis/balena-node-red/75a25ef89a6dfef0fab428e9a0b9ac5bc4ddfc5b/logo.png"
 data:
   applicationEnvironmentVariables:
-    - PORT: 80
-    - USERNAME: "test"
-    - PASSWORD: "$2b$08$hKNRG3SOOtmifcUotJoL7.4C9SYrxOY7PdCTGRo8gPB8Quk7htfBy"  #node-red-admin hash-pw         
-    - CONSOLE_LOG: "trace"  # fatal < error < warn < info < debug < trace
-    - CREDENTIALSECRET: "credentialSecret"
-    - TITRE: "Nodered"
-    - TITRE_URL: '"https://flows.nodered.org"'
+    - PORT: 88
+    - NR_PORT: 80
+    - NR_USERNAME: "test"
+    - NR_PASSWORD: "$2b$08$hKNRG3SOOtmifcUotJoL7.4C9SYrxOY7PdCTGRo8gPB8Quk7htfBy"  #node-red-admin hash-pw         
+    - NR_CONSOLE_LOG: "trace"  # fatal < error < warn < info < debug < trace
+    - NR_CREDENTIALSECRET: "credentialSecret"
+    - NR_TITRE: "Nodered"
+    - NR_TITRE_URL: '"https://flows.nodered.org"'
     - SCP_PASSWORD: 'balena2'
     - ENABLE_REMOTE_CONTROL_VIA_ADVANCEDSETTINGS: '1'
     - LAUNCH_URL: '"http://localhost:80/ui"'
