@@ -82,6 +82,11 @@ services:
       - redis-data:/data/redis-data
       - redis-config:/usr/local/etc/redis
       - haproxy-data:/data/haproxy-data
+      - snapdrop-config:/data/snapdrop-config
+      - snapdrop-data:/data/snapdrop-data  #attention les mises à jours de ce soft ne s'appliqueront plus si on delete pas les data dans ce dossier
+      - heimdall-config:/data/heimdall-config
+      - homer-data:/data/homer-data
+      - ombi-config:/data/ombi-config
     ports:
       - "22:22/udp"
       - "22:22/tcp"  
