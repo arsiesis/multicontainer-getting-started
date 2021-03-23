@@ -110,7 +110,7 @@ services:
       - homer-data:/www/assets
     network_mode: host
     ports:
-      - 87:87
+      - 83:83
       - 8080:8080
     environment:
       - UID=1000
